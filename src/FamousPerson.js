@@ -5,9 +5,9 @@ class FamousPerson extends Component {
     // An abbreviated way to setup component state
     state = { 
         person: {
-            name: '',
-            role: ''
-        }
+            name: 'Jane Doe',
+            role: 'Tarzan'
+        },
     }
 
     handleChangeFor = (propertyName) => {
@@ -21,12 +21,17 @@ class FamousPerson extends Component {
         }
     }
 
+    handleClick = (event) => {
+        console.log ('Person', this.state.person);
+    }
+    
     render() {
     return (
         <section>
-            <input onChange={ this.handleChangeFor('name') } placeholder="name"/>
+            <input onChange={ this.handleChangeFor('name') } placeholder="name"/><br></br>
             <input onChange={ this.handleChangeFor('role') } placeholder="role"/>
-            <p>Hello {this.state.person.name} is famous for {this.state.person.role}.</p>
+            <p>{this.state.person.name} is famous for {this.state.person.role}.</p>
+            <button onClick={this.handleClick}>Submit</button>
         </section>
     );}
 }
