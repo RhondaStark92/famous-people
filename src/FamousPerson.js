@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './FamousPerson.css';
+import FamousPersonForm from './FamousPersonForm';
 
 class FamousPerson extends Component {
     // An abbreviated way to setup component state
@@ -41,12 +42,8 @@ class FamousPerson extends Component {
 
         return (
             <div>
-                <section>
-                    <input onChange={ this.handleChangeFor('name') } placeholder="name" value={this.state.newPerson.name}/><br></br>
-                    <input onChange={ this.handleChangeFor('role') } placeholder="role" value={this.state.newPerson.role}/>
-                    <p>{this.state.newPerson.name} is famous for {this.state.newPerson.role}.</p>
-                    <button onClick={ this.handleClick }>Submit</button>
-                </section>
+                
+                <FamousPersonForm handleClick={this.handleClick} handleChangeFor={this.handleChangeFor} newPerson={this.state.newPerson} />
                 <section>
                     <h2>All the Famous People</h2>
                     <ul>
