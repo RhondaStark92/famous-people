@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './FamousPerson.css';
 import FamousPersonForm from './FamousPersonForm';
+import FamousPersonList from './FamousPersonList';
 
 class FamousPerson extends Component {
     // An abbreviated way to setup component state
@@ -24,8 +25,6 @@ class FamousPerson extends Component {
     }
 
     handleClick = (event) => {
-        // Default for form is refresh page - don't want that, so prevent default
-        event.preventDefault();
         let user = this.state.newPerson;
         console.log('The new person is', user);
         this.setState({
@@ -39,19 +38,11 @@ class FamousPerson extends Component {
     }
     
     render() {
-
         return (
             <div>
-                
-                <FamousPersonForm handleClick={this.handleClick} handleChangeFor={this.handleChangeFor} newPerson={this.state.newPerson} />
-                <section>
-                    <h2>All the Famous People</h2>
-                    <ul>
-                    { this.state.people.map( (person, index) => 
-                        <li key={index}>The {person.name} starred in {person.role}.</li>
-                        ) }
-                    </ul>
-                </section>
+                <FamousPersonForm handleClick={this.handleClick} handleChangeFor={this.handleChangeFor}
+                 newPerson={this.state.newPerson} />
+                <FamousPersonList list={this.state.people} />
             </div>
         );
     }
